@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <a href="checkout.html">Checkout product</a>
+    <p></p>
+    <input id="code" type="text" placeholder="Type Code">
+    <button id="apply">Apply code</button>
+    <div id="allcart">
+
+    </div>
+
+</body>
+<script>
+     var cartData=JSON.parse(localStorage.getItem('cartData'));
+
+
+
+
+    var totalSum = cartData.reduce(function(sum, ele, index, arr) {
+        return sum + Number(ele.price);
+    }, 0);
+
+    var totalItem=cartData.length;
+    document.querySelector('p').innerText=` You have ${totalItem}  items in your cart and total price is ${totalSum}`
+
+    // apply cupon code 
+
+    document.querySelector('#apply').addEventListener('click',function(){
+         event.preventDefault();
+         var totalSum = cartData.reduce(function(sum, ele, index, arr) {
+        return sum + Number(ele.price);
+      }, 0);    
+
+    var totalItem=cartData.length;
+    document.querySelector('p').innerText=` You have ${totalItem}  items in your cart and total price is ${totalSum}`
+
+    if(document.querySelector('#code').value=="masai30"){
+        totalSum=(Number(totalSum)*70)/100;
+
+        }
+
+         document.querySelector('p').innerText=` You have ${totalItem}  items in your cart and total price is ${totalSum}`
+
+     })
+
+
+    console.log(cartData);
+    cartData.forEach((element,index)=> {
+
+        var box=document.createElement('div');
+    box.setAttribute('class','box');
+
+    var img=document.createElement('img');
+    img.src=element.image_url;
+
+    var name=document.createElement('p');
+    name.innerText=element.name;
+
+    var price=document.createElement('p');
+    price.innerText=element.price;
+
+    var rating = document.createElement('p');
+    rating.innerText=element.rating;
+
+    var removeButton=document.createElement('button');
+    removeButton.innerText="Remove From Cart";
+    removeButton.addEventListener('click',function(){
+        cartData.splice(index,1);
+        localStorage.setItem('cartData',JSON.stringify(cartData));
+        window.location.reload();
+
+
+
+    });
+
+
+    box.append(name,rating,img,price,removeButton);
+    document.querySelector('#allcart').append(box);
+
+    });
+
+
+
+
+
+
+</script>
+</html> 

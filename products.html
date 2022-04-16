@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <style>
+        #product{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap:2vw;
+        }
+    </style>
+</head>
+<body>
+    <a href="cart.html">Go To Cart</a>
+    <div id="container">
+        <div id="sorting">
+            <div>
+                        <p> Price</p>
+                        <select name="sortbyprice" id="sortprice">
+                            <option value="none">none</option>
+                              <option value="high to low">high to low</option>
+                              <option value="low to high">low to high</option>
+                         </select>
+            </div>
+            <div>
+                <p> Rating</p>
+                <select name="sortrating" id="sortrating">
+                    <option value="none">none</option>
+                      <option value="high to low">high to low</option>
+                      <option value="low to high">low to high</option>
+                 </select>
+            </div>
+
+        </div>
+
+
+        <div id="product">
+
+        </div>
+
+    </div>
+    
+</body>
+<script src="index.js"></script>
+</html>
