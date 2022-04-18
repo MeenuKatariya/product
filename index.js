@@ -68,52 +68,45 @@ var productData = [
 
 
 
-  var cartData;
+  
 
-  if(localStorage.getItem('cartData') === null) {
-      cartData = [];
-  } else {
-      cartData = JSON.parse(localStorage.getItem('cartData'));
-  }
- 
+  // productData.forEach(all => {
+  //   var box=document.createElement('div');
+  //   box.setAttribute('class','box');
 
-  productData.forEach(all => {
-    var box=document.createElement('div');
-    box.setAttribute('class','box');
+  //   var img=document.createElement('img');
+  //   img.src=all.image_url;
 
-    var img=document.createElement('img');
-    img.src=all.image_url;
+  //   var name=document.createElement('p');
+  //   name.innerText=all.name;
 
-    var name=document.createElement('p');
-    name.innerText=all.name;
+  //   var price=document.createElement('p');
+  //   price.innerText=all.price;
 
-    var price=document.createElement('p');
-    price.innerText=all.price;
+  //   var rating = document.createElement('p');
+  //   rating.innerText=all.rating;
 
-    var rating = document.createElement('p');
-    rating.innerText=all.rating;
-
-    var cartbutton=document.createElement('button');
-    cartbutton.innerText="Add to Cart";
-    cartbutton.addEventListener('click',function(){
-        cartData.push(element);
-        alert("Item added sucessfully");
-        localStorage.setItem('cartData', JSON.stringify(cartData));
+  //   var cartbutton=document.createElement('button');
+  //   cartbutton.innerText="Add to Cart";
+  //   cartbutton.addEventListener('click',function(){
+  //       cartData.push(element);
+  //       alert("Item added sucessfully");
+  //       localStorage.setItem('cartData', JSON.stringify(cartData));
        
 
      
-    });
+  //   });
 
     
-    box.append(name,rating,img,price,cartbutton);
-    document.querySelector('#product').append(box);
+  //   box.append(name,rating,img,price,cartbutton);
+  //   document.querySelector('#product').append(box);
 
 
    
   
 
       
-  });
+  // });
 
 
 
@@ -122,15 +115,22 @@ var productData = [
 
 
   var filteredData = JSON.parse(JSON.stringify(productData));
-    
+  var cartData;
+
+  if(localStorage.getItem('cartData') === null) {
+      cartData = [];
+  } else {
+      cartData = JSON.parse(localStorage.getItem('cartData'));
+  }
+ 
    
     document.querySelector('#sortprice').addEventListener('change', function() {
       var sortType = document.querySelector('#sortprice').value;
       if(sortType === 'none') {
-        displayData(mensData);
+        displayData(productData);
       } else {
         filteredData.sort(function(a, b) {
-          if(sortType === "low to high") {
+          if(sortType === "lowtohigh") {
             return a.price - b.price;
           }
           return b.price - a.price;
@@ -141,7 +141,7 @@ var productData = [
     document.querySelector('#sortrating').addEventListener('change', function() {
       var sortType = document.querySelector('#sortrating').value;
       if(sortType === 'none') {
-        displayData(mensData);
+        displayData(productData);
       } else {
         filteredData.sort(function(a, b) {
           if(sortType === "low to high") {
@@ -152,28 +152,28 @@ var productData = [
         displayData(filteredData);
       }
     });
-    function displayData(menData) {
-      document.querySelector('#product-container').innerHTML = '';
-      mensData.forEach(function(productData) {
+    function displayData(productData) {
+      document.querySelector('#product').innerHTML = '';
+      productData.forEach(function(productData) {
         var box=document.createElement('div');
         box.setAttribute('class','box');
     
         var img=document.createElement('img');
-        img.src=element.image_url;
+        img.src=productData.image_url;
     
         var name=document.createElement('p');
-        name.innerText=element.name;
+        name.innerText=productData.name;
     
         var price=document.createElement('p');
-        price.innerText=element.price;
+        price.innerText=productData.price;
     
         var rating = document.createElement('p');
-        rating.innerText=element.rating;
+        rating.innerText=productData.rating;
     
         var cartbutton=document.createElement('button');
         cartbutton.innerText="Add to Cart";
         cartbutton.addEventListener('click',function(){
-            cartData.push(element);
+            cartData.push(productData);
             alert("Item added sucessfully");
             localStorage.setItem('cartData', JSON.stringify(cartData));
            
