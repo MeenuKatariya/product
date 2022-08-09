@@ -7,22 +7,51 @@
     <title>Document</title>
     <style>
         h1{
-            color:green
+            color:green;
+            text-align:center;
+
+        }
+
+        #new{
+            margin: auto;
+        }
+#form{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    text-align: center;
+    gap:10px;
+    margin: auto;
+    height: 330px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+        .name{
+color:red;
+text-align: center;
+gap:10px;
+width:250px;
+height: 30px;
+border: none;
+outline: none;
+border-radius: 10px;
+margin: auto;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
         }
     </style>
 </head>
 <body>
     <h1>Enter Delivery Address</h1>
-    <form>
-        <input id="name" type="text" placeholder="Enter  name">
-        <input id="number" type="number" placeholder="Enter  mobile number">
+    <div id="new">
+    <form id="form">
+        <input class="name" type="text" placeholder="Enter  name">
+        <input class="name" type="number" placeholder="Enter  mobile number">
         <p>ENTER complete Address</p>
-        <input type="text" placeholder="Enter City">
-        <input type="text" placeholder="State">
-        <input type="number" placeholder="PinCode">
-        <input type="submit" value="Proceed to Payment">
+        <input  class="name" type="text" placeholder="Enter City">
+        <input class="name" type="text" placeholder="State">
+        <input class="name" type="number" placeholder="PinCode">
+        <input class="name" type="submit" value="Proceed to Payment">
     </form>
-    
+</div>
 </body>
 <script>
     document.querySelector('form').addEventListener('submit',function(){

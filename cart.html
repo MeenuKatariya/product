@@ -4,7 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>cart</title>
+
+    <style>
+
+        a{
+            text-decoration: none;
+            color: pink;
+        }
+
+
+        .box{
+            /* border: 1px solid red; */
+            width:300px;
+            margin-top: 50px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+        }
+
+        .name{
+            color: blue;
+            font-family: Arial;
+
+        }
+
+        .price{
+            color:cadetblue;
+            text-align: center;
+        }
+        button{
+            margin-left: 70px;
+            border: none;
+            color: chocolate;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+    </style>
 </head>
 <body>
    <a href="checkout.html">Checkout product</a>
@@ -58,18 +92,23 @@
 
     var img=document.createElement('img');
     img.src=element.image_url;
+    img.setAttribute("class","image")
 
     var name=document.createElement('p');
     name.innerText=element.name;
+    name.setAttribute("class","name")
 
     var price=document.createElement('p');
     price.innerText=element.price;
+    price.setAttribute("class","price")
 
     var rating = document.createElement('p');
     rating.innerText=element.rating;
+    rating.setAttribute("class","rating")
 
     var removeButton=document.createElement('button');
     removeButton.innerText="Remove From Cart";
+    
     removeButton.addEventListener('click',function(){
         cartData.splice(index,1);
         localStorage.setItem('cartData',JSON.stringify(cartData));
